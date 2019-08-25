@@ -7,11 +7,11 @@ app=Flask(__name__)
 app.secret_key = 'flask'
 api =Api(app)
 
-jwt = JWT(app,authenticate,identity())
+#jwt = JWT(app,authenticate,identity)
 items=[]
 #no need to jsonify, flask restful does it. so we pass dict only
 class Item(Resource):
-    @jwt_required
+    #@jwt_required()
     def get(self,name):
         item=next(filter(lambda x:x['name']==name,items),None)
         #next gives first item matched by the filter

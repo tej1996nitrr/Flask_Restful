@@ -55,3 +55,44 @@ after authentication we return user.
 auth endoint return a jwt token
 when we send it to next request ,(the jwt token) jwt calls  identity
 function which then returns the username that was previously authenticated
+
+Q who creates http://127.0.0.1:5000/auth
+
+Jwt extension creates the endpoint by default
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
