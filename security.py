@@ -1,3 +1,4 @@
+from werkzeug.security import safe_str_cmp
 #in memory table of registered users
 
 from user import User
@@ -9,20 +10,20 @@ from user import User
 # 'username':'harry',
 # 'password':'potter'}
 # }
-users=[
-    User(1,'bob','asdf')
 
+users = [
+    User(1, 'user1', 'abcxyz'),
+    User(2, 'user2', 'abcxyz'),
 ]
 
-user_mapping={u.username:u for u in users}
-userid_mapping={u.id:u for u in users}
+username_table = {u.username: u for u in users}
+userid_table = {u.id: u for u in users}
 
-def authenticate(username,password):
-    #return
-    user = userid_mapping.get(username,None)
-    if user and user.password==password:
+def authenticate(username, password):
+    user = username_table.get(username, None)
+    if user and safe_str_cmp(user.password, password):
         return user
 
 def identity(payload):
-    user_id=payload['identity']
-    return userid_mapping.get(user_id,None)
+    user_id = payload['identity']
+    return userid_table.get(user_id, None)
